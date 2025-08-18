@@ -1,2 +1,2 @@
 # CSharp
-Codigos usados na matereria de orientação objetos
+Códigos usados na matéreria de programação orientação a objetos.
