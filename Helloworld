@@ -1,1 +1,1 @@
-console.linewrite("Hello world!");
+console.writeline("Hello world!");
