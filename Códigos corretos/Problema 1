@@ -1,0 +1,29 @@
+using System;
+using System.Globalization;
+
+// ERRO: faltou ';' ao final da linha
+// Console.WriteLine("Por favor, digite seu primeiro nome:")
+
+// Correto:
+Console.Write("Por favor, digite seu primeiro nome: ");
+string primeiroNome = Console.ReadLine() ?? string.Empty;
+
+// ERRO: atribuía string diretamente a int
+// int idade = Console.ReadLine();
+
+// Correto:
+Console.Write("Agora, digite sua idade: ");
+int idade = int.Parse(Console.ReadLine()!);
+
+// ERRO: poderia falhar por cultura; aceitar ponto como separador
+
+Console.Write("Por fim, digite sua altura em metros (ex: 1.80): ");
+float altura = float.Parse(Console.ReadLine()!,
+CultureInfo.InvariantCulture);
+
+// ERRO: Console.writeline e variável com capitalização incorreta {PrimeiroNome}
+// Console.writeline($"Resumo do Cadastro: Nome: {PrimeiroNome}, Idade:{idade} anos, Altura: {altura};
+
+// Correto:
+Console.WriteLine($"Resumo do Cadastro: Nome: {primeiroNome}, Idade: {idade}
+anos, Altura: {altura.ToString("0.00", CultureInfo.InvariantCulture)} m.");
