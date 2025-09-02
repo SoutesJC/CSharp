@@ -1,0 +1,18 @@
+using System;
+int[] notas = new int[5];
+// ERRO: off-by-one (usava <= Length)
+// for (int i = 0; i <= notas.Length; i++)
+// Correto:
+for (int i = 0; i < notas.Length; i++)
+{
+Console.Write($"Digite a nota {i + 1}: ");
+notas[i] = int.Parse(Console.ReadLine()!);
+}
+for (int i = 0; i < notas.Length; i++)
+{
+// ERRO: usava atribuição no ternário (notas[i] = 7 ? ...)
+// string situacao = notas[i] = 7 ? "Aprovado" : "Reprovado";
+// Correto:
+string situacao = notas[i] >= 7 ? "Aprovado" : "Reprovado";
+Console.WriteLine($"Nota {i + 1}: {notas[i]} - {situacao}");
+}
