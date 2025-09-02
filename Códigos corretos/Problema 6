@@ -1,0 +1,20 @@
+using System;
+using System.Globalization;
+double total = 0;
+while (total < 50)
+{
+Console.Write("Digite o valor a ser guardado: ");
+// ERRO: usava string em variável numérica e operador de atribuição 
+incorreto
+// double total = "0";
+// total =+ valor;
+// Correto:
+double valor = double.Parse(Console.ReadLine()!,
+CultureInfo.InvariantCulture);
+total += valor;
+}
+// ERRO: interpolação sem $ na string
+// Console.WriteLine("Meta atingida! Total economizado: R$ {total}");
+// Correto:
+Console.WriteLine($"Meta atingida! Total economizado: R$ 
+{total.ToString("0.00", CultureInfo.InvariantCulture)}");
