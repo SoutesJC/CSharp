@@ -1,0 +1,18 @@
+using System;
+string resposta;
+do
+{
+Console.Write("Deseja sair? (S/N): ");
+// ERRO: atribuía char a string e não tratava nulo/espacos
+// resposta = Console.ReadLine().ToUpper()[0];
+// Correto:
+resposta = (Console.ReadLine() ?? string.Empty).Trim().ToUpper();
+}
+// ERRO: condição fazia loop infinito (sempre verdadeira)
+// while (resposta != "S" || resposta != "N");
+// Correto:
+while (resposta != "S");
+// ERRO: writeline com caixa incorreta
+// Console.writeline("Programa encerrado.");
+// Correto:
+Console.WriteLine("Programa encerrado.");
