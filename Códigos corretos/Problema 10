@@ -1,0 +1,55 @@
+using System;
+// ERRO: matriz criada sem dimensionar 2ª dimensão
+// int[,] matriz = new int[3];
+// Correto:
+int[,] matriz = new int[3, 3];
+for (int i = 0; i < 3; i++)
+{
+for (int j = 0; j < 3; j++)
+{
+Console.Write($"Valor [{i},{j}]: ");
+matriz[i, j] = int.Parse(Console.ReadLine()!);
+}
+}
+Console.Write("Número a buscar: ");
+// ERRO: faltou ';'
+// int buscado = int.Parse(Console.ReadLine())
+// Correto:
+int buscado = int.Parse(Console.ReadLine()!);
+// ERRO: bool recebido como null
+// bool encontrado = null;
+// Correto:
+bool encontrado = false;
+int linha = -1, coluna = -1;
+for (int i = 0; i < 3 && !encontrado; i++)
+{
+for (int j = 0; j < 3; j++)
+{
+// ERRO: usava atribuição dentro do if e invertia linha/coluna
+// if (matriz[i, j] = buscado) { encontrado == true; linha = j; 
+coluna = i; }
+// Correto:
+if (matriz[i, j] == buscado)
+{
+encontrado = true;
+linha = i;
+coluna = j;
+break;
+}
+}
+}
+// ERRO: "=" em vez de "==" e Console.writeline
+// if (encontrado = true) { Console.writeline($"Encontrado em ({linha + 1}, 
+{coluna + 1})") }
+// Correto:
+if (encontrado)
+{
+Console.WriteLine($"Encontrado em ({linha + 1}, {coluna + 1})");
+}
+else
+{
+// ERRO: interpolação sem $
+// Console.WriteLine("Número não encontrado: {buscado}");
+// Correto:
+Console.WriteLine($"Número não encontrado: {buscado}");
+}
