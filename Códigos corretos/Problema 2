@@ -1,0 +1,19 @@
+using System;
+// ERRO: literal float sem sufixo e demais tipos/aspas incorretos
+// float notaProva = 8.5;
+// int quantidadeAlunos = "42";
+// string nomeCurso = 'Fundamentos de C#';
+// bool pagamentoEfetuado = "false";
+// char digitoVerificador = "7";
+// Console.WriteLine(nomecurso);
+// Correto:
+double notaProva = 8.5; // ponto flutuante
+int quantidadeAlunos = 42; // inteiro
+string nomeCurso = "Fundamentos de C#";
+bool pagamentoEfetuado = false;
+char digitoVerificador = '7';
+Console.WriteLine(notaProva);
+Console.WriteLine(quantidadeAlunos);
+Console.WriteLine(nomeCurso);
+Console.WriteLine(pagamentoEfetuado);
+Console.WriteLine(digitoVerificador);
