@@ -1,0 +1,72 @@
+using System;
+// ERRO: declarou jagged com sintaxe de matriz retangular
+// int[][] matriz = new int[3,3];
+// Correto:
+int[,] matriz = new int[3, 3];
+// ERRO: faltou ';'
+// int somaTotal = 0
+// Correto:
+int somaTotal = 0;
+int somaDiagonal = 0;
+int[] maiores = new int[3];
+// ERRO: limites com <= 3 (acessa índice 3)
+// for (int i = 0; i <= 3; i++)
+// for (int j = 0; j <= 3; j++)
+// Correto:
+for (int i = 0; i < 3; i++)
+{
+int maxLinha = int.MinValue;
+for (int j = 0; j < 3; j++)
+{
+Console.Write($"Valor [{i},{j}]: ");
+int valor = int.Parse(Console.ReadLine()!);
+// ERRO: invertia índices na atribuição
+// matriz[j, i] = valor;
+// Correto:
+matriz[i, j] = valor;
+somaTotal += valor;
+if (i == j)
+{
+// ERRO: somava matriz[i, i+1]
+// somaDiagonal += matriz[i, i + 1];
+// Correto:
+somaDiagonal += matriz[i, j];
+}
+if (valor > maxLinha) maxLinha = valor;
+}
+maiores[i] = maxLinha;
+}
+// ERRO: interpolação sem $ e uso de variável fora do escopo
+// Console.WriteLine("Soma total: {somaTotal}");
+// for (int i = 0; i < 3; i++) Console.WriteLine(maiores[j]);
+// Correto:
+Console.WriteLine($"Soma total: {somaTotal}");
+Console.WriteLine($"Soma diagonal principal: {somaDiagonal}");
+Console.WriteLine($"Maiores por linha: {maiores[0]}, {maiores[1]}, 
+{maiores[2]}");
+// ERRO: mistura retangular com jagged
+// int[,] transposta = new int[3][3];
+// Correto:
+int[,] transposta = new int[3, 3];
+for (int i = 0; i < 3; i++)
+{
+for (int j = 0; j < 3; j++)
+{
+// ERRO: copiava sem transpor
+// transposta[i, j] = matriz[i, j];
+// Correto:
+transposta[j, i] = matriz[i, j];
+}
+}
+Console.WriteLine("Matriz transposta:");
+for (int i = 0; i < 3; i++)
+{
+for (int j = 0; j < 3; j++)
+{
+Console.Write(transposta[i, j] + " ");
+}
+// ERRO: faltava ';'
+// Console.WriteLine()
+// Correto:
+Console.WriteLine();
+}
