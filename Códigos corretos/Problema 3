@@ -1,0 +1,14 @@
+using System;
+Console.Write("Digite sua idade: ");
+int idade = int.Parse(Console.ReadLine()!);
+// ERRO: operador e ponto e vírgula após condição
+// if (idade => 18);
+// Correto:
+if (idade >= 18)
+{
+Console.WriteLine("Você é maior de idade.");
+}
+else
+{
+Console.WriteLine("Você é menor de idade.");
+}
