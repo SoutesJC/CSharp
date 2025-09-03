@@ -1,19 +1,53 @@
-using System;
-// ERRO: literal float sem sufixo e demais tipos/aspas incorretos
-// float notaProva = 8.5;
-// int quantidadeAlunos = "42";
-// string nomeCurso = 'Fundamentos de C#';
-// bool pagamentoEfetuado = "false";
-// char digitoVerificador = "7";
-// Console.WriteLine(nomecurso);
-// Correto:
-double notaProva = 8.5; // ponto flutuante
-int quantidadeAlunos = 42; // inteiro
+/*
+float notaProva = 8.5;
+*/
+//Erro 01: Literal do tipo double não pode ser convertido implicitamente no tipo "float"; use um sufixo "F" para criar um literal desse tipo
+// O caracter "." indica um valor do tipo Double, porém a variável notaProva é do tipo float. Basta inserir o sufíxo f para indicar que é um valor do tipo float. 
+//Correção:
+float notaProva = 8.5f;
+
+/*
+int quantidadeAlunos = "42";
+*/
+//Erro 02: Não é possível converter implicitamente tipo "string" em "int".
+//Atribuição de caracter a uma variável inteira.
+//Correção: 
+int quantidadeAlunos = 42;
+
+/*
+string nomeCurso = 'Fundamentos de C#';
+*/
+//Erro 03: Número excessivo de caracteres no literal de caractere.
+//Em C# aspas simples são usadas para atribuir um único caracter e as aspas duplas são usadas para atribuir um vetor de caracteres (string).
+//Correção:
 string nomeCurso = "Fundamentos de C#";
+
+/*
+bool pagamentoEfetuado = "false";
+*/
+//Erro 04: Não é possível converter implicitamente tipo "string" em "bool".
+// O erro aconteceu, porque "X" entre as aspas duplas indica uma string, para descrever um valor bool devemos usar false ou true, sem aspas.
+//Correção:
 bool pagamentoEfetuado = false;
+
+/*
+char digitoVerificador = "7"
+*/
+//Erro 05: Erro de sintaxe, "," esperado. | Não é possível converter implicitamente tipo "string" em "char".
+// O erros acontecerem porque está sem o caracter ";" para informar o fim do comando e também porque o caracter "7" está indicado por aspas duplas informando uma string, não um char como esperado.
+//Correção:
 char digitoVerificador = '7';
-Console.WriteLine(notaProva);
-Console.WriteLine(quantidadeAlunos);
-Console.WriteLine(nomeCurso);
-Console.WriteLine(pagamentoEfetuado);
-Console.WriteLine(digitoVerificador);
+
+Console.WriteLine($"{notaProva}\n");
+Console.WriteLine($"{quantidadeAlunos}\n");
+
+/*
+Console.WriteLine($"{nomecurso}\n");
+*/
+//Erro 06: O nome "nomecurso" não existe no contexto atual.
+// O erro ocorre, pois a variável declarada é "nomeCurso" e não "nomecurso", como C# é case sensiblity o compilador interpreta como variáveis distintas.
+//Correção:
+Console.WriteLine($"{nomeCurso}\n");
+
+Console.WriteLine($"{pagamentoEfetuado}\n");
+Console.WriteLine($"{digitoVerificador}\n");
