@@ -1,29 +1,40 @@
-using System;
-using System.Globalization;
+/*
+Console.WriteLine("Digite seu nome completo: ");
+string primeiroNome = Console.ReadLine();
+*/
+// Erro 01 : Conversão de Literal nula ou possivel valor nulo em tipo não anulável.
+// CS8600
+// A função Console.ReadLine() retorna valores inclusives nulos, porém o tipo atribuído "string" não aceita valores nulos, para resolver podemos apenas colocar o digito "!" para converter null em uma string.
+//Correção:
+Console.WriteLine("Digite seu primeiro nome: ");
+string primeiroNome = Console.ReadLine()!;
 
-// ERRO: faltou ';' ao final da linha
-// Console.WriteLine("Por favor, digite seu primeiro nome:")
+/*
+Console.WriteLine("Agora, digite sua idade: ");
+int idade = Console.ReadLine();
+*/
+//Erro 02 :Não é possível converter implicitamente tipo "string" em "int".
+//: A função Console.ReadLine retorna uma string, porém a variável atribuída é do tipo inteira. Erro de tipagem básico.
+//Correção: 
+Console.WriteLine("Agora, digite sua idade: ");
+int idade = /*Convert.ToInt32*/int.Parse(Console.ReadLine()!);
 
-// Correto:
-Console.Write("Por favor, digite seu primeiro nome: ");
-string primeiroNome = Console.ReadLine() ?? string.Empty;
+/*
+Console.WriteLine("Por fim, digite sua altura em metros (ex: 1,80): ");
+float altura = float.Parse(Console.ReadLine());
+*/
+//Erro 03: Possível argumento de referência nula para o parâmetro 's' em 'float float.Parse(string s)'.
+//A função Console.ReadLine() pode retornar um valor nulo, porém a atribuição float altura não aceita valores nulos como entrada.
 
-// ERRO: atribuía string diretamente a int
-// int idade = Console.ReadLine();
+//Correção:
+Console.WriteLine("Por fim, digite sua altura em metros (ex: 1,80): ");
+float altura = float.Parse(Console.ReadLine()!);
 
-// Correto:
-Console.Write("Agora, digite sua idade: ");
-int idade = int.Parse(Console.ReadLine()!);
+/*
+Console.WriteLine($"Resumo do Cadastro: Nome: {primeiroNome}, Idade: {idade} anos, Altura: {altura}m.")
+*/
+//Erro 04: ; esperado.
+// Erro de sintaxe comum. Apenas o caracter ";" não foi adicionado no final da expressão.
 
-// ERRO: poderia falhar por cultura; aceitar ponto como separador
-
-Console.Write("Por fim, digite sua altura em metros (ex: 1.80): ");
-float altura = float.Parse(Console.ReadLine()!,
-CultureInfo.InvariantCulture);
-
-// ERRO: Console.writeline e variável com capitalização incorreta {PrimeiroNome}
-// Console.writeline($"Resumo do Cadastro: Nome: {PrimeiroNome}, Idade:{idade} anos, Altura: {altura};
-
-// Correto:
-Console.WriteLine($"Resumo do Cadastro: Nome: {primeiroNome}, Idade: {idade}
-anos, Altura: {altura.ToString("0.00", CultureInfo.InvariantCulture)} m.");
+//Correção:
+Console.WriteLine($"Resumo do Cadastro: Nome: {primeiroNome}, Idade: {idade} anos, Altura: {altura}m.");
