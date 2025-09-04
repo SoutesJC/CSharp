@@ -1,7 +1,10 @@
 # CSharp - Atividade clinica de Bugs
 Menbros:
+
 Jeancarlo Soutes dos Santos
-Jhonathan
+
+Jhonatan Wilber
+
 Pablo Weber
 
 
