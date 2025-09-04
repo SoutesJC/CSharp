@@ -1,11 +1,17 @@
 using System;
+// Objetivo do código é o usúario informar apenas um número e o código mostra a tabuada do número usando looping
 Console.Write("Digite um número para ver a tabuada: ");
 int num = int.Parse(Console.ReadLine()!);
-// ERRO: direção do laço e variável inexistente no produto
+// ERRO: direção do laço e variável inexistente no produto, portanto foi necessario alterar para 'i++' assim o programa usaria o 
+// contador i de maneira correta
 // for (int i = 1; i <= 10; i--)
+// ERRO: a variavel j não existe e não se encaixa no proposito do codigo portanto foi substituida pela variavel correta i
 // Console.WriteLine($"{num} x {i} = {num * j}");
 // Correto:
 for (int i = 1; i <= 10; i++)
 {
+//Assim que o looping foi feito corretamento a multiplicação acontece dentro do Console.Writeline, resteitando as regras do clean code
+//já que seria nessesario a implementação de uma nova variavel e mais uma linha de código para para atribuir o valor da multiplicão
+//mas, da maneira feita o código fica mais compacto e eficiente.
 Console.WriteLine($"{num} x {i} = {num * i}");
 }
