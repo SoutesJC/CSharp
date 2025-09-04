@@ -1,5 +1,5 @@
 # CSharp - Atividade clinica de Bugs
-Menbros:
+Membros:
 
 Jeancarlo Soutes dos Santos
 
