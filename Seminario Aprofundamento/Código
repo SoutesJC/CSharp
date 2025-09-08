@@ -126,3 +126,47 @@ public class ContaFinanceira
     }
 
 }
+
+class Program
+{
+    static void Main()
+    {
+        Console.WriteLine("=== Demo ContaFinanceira ===");
+
+        // Caso OK 1: criar e depositar // Contrutor adicional : Sem Saldo Incial
+        var c1 = new ContaFinanceira("Jhonatan Wilber");
+        c1.Depositar(100m);
+        Console.WriteLine("Caso OK1 -> " + c1.Titular + " | Saldo: " + c1.Saldo);
+
+        // Caso OK 2: Saque válido: // Contrutor adicional : Tamanho historico
+        var c2 = new ContaFinanceira("Pablo", 100m, 5);
+        c2.Sacar(50m);
+        Console.WriteLine("Caso OK2 -> " + c2.Titular + " | Saldo: " + c2.Saldo);
+
+
+        //CASOS ERROS:
+
+        try
+        {
+            c1.Sacar(1000);
+        }
+        catch (SaldoInsuficienteExcecao ex)
+        {
+            Console.WriteLine("Caso ERRO1 (esperado) -> " + ex.Message);
+            
+        }
+
+        // Caso ERRO 2: criar conta com saldo negativo
+        try
+        {
+            var c3 = new ContaFinanceira("Jeancarlo", -10);
+            
+
+        }
+        catch (ValorInvalidoExcecao ex)
+        {
+            Console.WriteLine("Caso ERRO2 (esperado) -> " + ex.Message);
+        }
+    }
+
+}
