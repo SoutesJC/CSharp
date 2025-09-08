@@ -37,8 +37,7 @@ public class ContaFinanceira
             throw new ValorInvalidoExcecao("Titular não ser vazio!");
         }
         if (saldoInicial < 0)
-        {   //throw genérico:
-            //throw new ArgumentException("Saldo inicial não pode ser negativo");
+        { 
             throw new ValorInvalidoExcecao("Saldo inicial não pode ser negativo");
 
         }
