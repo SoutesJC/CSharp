@@ -15,7 +15,6 @@ public class ValorInvalidoExcecao : Exception
     public ValorInvalidoExcecao(string mensagem) : base(mensagem) { }
  }
 
-
 public class ContaFinanceira
 {
     //Propriedades:
