@@ -32,8 +32,7 @@ public class ContaFinanceira
 
     {
         if (string.IsNullOrWhiteSpace(titular))
-        {   //throw genérico:
-            //throw new ArgumentException("Titular não ser vazio!");
+        {  
             throw new ValorInvalidoExcecao("Titular não ser vazio!");
         }
         if (saldoInicial < 0)
