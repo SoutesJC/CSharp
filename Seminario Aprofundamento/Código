@@ -1,0 +1,130 @@
+using System;
+namespace SeminarioPOO;
+
+//Exceções COSTUMIZADAS
+
+// Exceção para saldo insuficiente
+public class SaldoInsuficienteExcecao : Exception
+{
+    public SaldoInsuficienteExcecao(string mensagem) : base(mensagem) { }
+}
+
+// Exceção para valores inválidos
+public class ValorInvalidoExcecao : Exception
+ {
+    public ValorInvalidoExcecao(string mensagem) : base(mensagem) { }
+ }
+
+
+public class ContaFinanceira
+{
+    //Propriedades:
+    public string Titular { get; private set; }
+    public decimal Saldo { get; private set; }
+    // Arrays:
+    private decimal[] lancamentos;
+    private DateTime[] datasLancamentos;
+    private int proximoIndice = 0; // count -> marcador que será usado no array.
+
+
+    // Construtores :
+    public ContaFinanceira(string titular, decimal saldoInicial)
+
+    {
+        if (string.IsNullOrWhiteSpace(titular))
+        {   //throw genérico:
+            //throw new ArgumentException("Titular não ser vazio!");
+            throw new ValorInvalidoExcecao("Titular não ser vazio!");
+        }
+        if (saldoInicial < 0)
+        {   //throw genérico:
+            //throw new ArgumentException("Saldo inicial não pode ser negativo");
+            throw new ValorInvalidoExcecao("Saldo inicial não pode ser negativo");
+
+        }
+
+
+        Titular = titular;
+        Saldo = saldoInicial;
+
+        lancamentos = new decimal[5];     // histórico de 5 operações
+        datasLancamentos = new DateTime[5];
+
+    }
+    //Contruores Add: 
+    public ContaFinanceira(string titular)
+        : this(titular, 0m){} // reaproveita o principal
+    public ContaFinanceira(string titular, decimal saldoInicial, int tamanhoHistorico)
+    : this(titular, saldoInicial) // reaproveita o principal
+{   if (tamanhoHistorico < 1 || tamanhoHistorico > 100)
+    {
+        throw new ValorInvalidoExcecao("Tamanho do histórico deve ser entre 1 e 100.");
+    }
+    lancamentos = new decimal[tamanhoHistorico];
+    datasLancamentos = new DateTime[tamanhoHistorico];
+}
+
+    // Metodos / Funções?:
+    public void Depositar(decimal valor)
+    {
+        if (valor <= 0)
+        {   //throw genérico:
+            //throw new ArgumentException("O valor do depósito deve ser maior que zero!");
+            throw new ValorInvalidoExcecao("O valor do depósito deve ser maior que zero!");
+        }
+        Saldo += valor;
+        RegistrarLancamento(valor);
+
+    }
+    public void Sacar(decimal valor)
+    {
+        if (valor <= 0)
+        {   //throw genérico:
+            //throw new ArgumentException("O valor de saque deve ser maior que zero!");
+            throw new ValorInvalidoExcecao("O valor de saque deve ser maior que zero!");
+        }
+        if (valor > Saldo)
+        {   //throw genérico:
+            //throw new InvalidOperationException("Saldo insuficiente!");
+            throw new SaldoInsuficienteExcecao("Saldo insuficiente!");
+        }
+        Saldo -= valor;
+        RegistrarLancamento(-valor); // negativo para diferenciar
+
+    }
+    private void RegistrarLancamento(decimal valor)
+    {
+        if (valor == 0m)
+        throw new ValorInvalidoExcecao("Não é permitido registrar lançamento com valor zero.");
+        
+        lancamentos[proximoIndice] = valor;
+        datasLancamentos[proximoIndice] = DateTime.Now;
+        proximoIndice = (proximoIndice + 1) % lancamentos.Length;
+        /*
+        Essa linha de código cria um "círculo" ou um "contador rotativo". 
+        Ele garante que proximoIndice sempre estará em um valor entre 0 e 4. 
+        Quando ele chega no final do array (índice 4), ele automaticamente "volta" para o
+        início (índice 0) para sobrescrever o lançamento mais antigo. Isso é exatamente o
+        que a imagem do seu trabalho pede: "guardar apenas os últimos lançamentos".
+        */
+    }
+    public (decimal[] valores, DateTime[] datas) GetHistorico()
+    /*O que está entre parênteses é o que chamamos de uma tupla em C#. 
+    Uma tupla permite que um método retorne múltiplos valores de tipos diferentes de
+    uma só vez.
+    */
+    {
+        decimal[] copiaValores = new decimal[lancamentos.Length];
+        DateTime[] copiaDatas = new DateTime[datasLancamentos.Length];
+
+        Array.Copy(lancamentos, copiaValores, lancamentos.Length);
+        Array.Copy(datasLancamentos, copiaDatas, datasLancamentos.Length);
+        /*Por isso, o método GetHistorico cria cópias dos arrays e retorna essas cópias.
+        Assim, quem recebe o histórico pode ler os dados e até alterá-los, mas as
+        alterações só afetam a cópia, e o objeto ContaFinanceira original continua seguro
+        e inalterado.
+        */
+        return (copiaValores, copiaDatas);
+    }
+
+}
