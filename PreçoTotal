@@ -1,0 +1,13 @@
+class Program
+{
+    static void Main()
+    {
+
+        int Quant = 24;
+        double Preco = 3.20;
+        double Total = Quant * Preco;
+
+        Console.WriteLine($"Preço total {Total}");  
+
+    }
+}
