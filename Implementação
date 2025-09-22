@@ -1,0 +1,71 @@
+using System;
+
+
+public override string ToString() => $"Bed[{BedId}, Available={IsAvailable}]";}
+
+
+public sealed class Patient{
+public string Name { get; }
+public MedicalRecord Record { get; }
+public Bed? Bed { get; private set; }
+
+
+public Patient(string name, MedicalRecord record){
+if (string.IsNullOrWhiteSpace(name))
+throw new ArgumentException("Name required", nameof(name));
+Record = record ?? throw new ArgumentNullException(nameof(record));
+Name = name;
+}
+
+
+
+public bool AssignBed(Bed bed){
+if (bed == null) throw new ArgumentNullException(nameof(bed));
+if (Bed != null) return false; // already has a bed
+if (!bed.IsAvailable) return false; // bed occupied elsewhere
+Bed = bed;
+bed.Occupy();
+return true;
+}
+
+
+
+public bool UnassignBed(){
+if (Bed == null) return false;
+Bed.Release();
+Bed = null;
+return true;
+}
+
+
+public override string ToString() => $"Patient[{Name}, Record={Record}, Bed={(Bed==null?"none":Bed.BedId)}]";
+}
+
+
+internal class Program{
+private static void Main(){
+Console.WriteLine("Demo start");
+
+var record = new MedicalRecord("MR-001", DateTime.UtcNow.AddDays(-1));
+var patient = new Patient("João Silva", record);
+var bed = new Bed("B-101");
+
+Console.WriteLine(patient);
+Console.WriteLine(bed);
+
+var ok = patient.AssignBed(bed);
+Console.WriteLine($"AssignBed returned: {ok}");
+Console.WriteLine(patient);
+Console.WriteLine(bed);
+
+var secondAttempt = patient.AssignBed(new Bed("B-102"));
+Console.WriteLine($"Second assign attempt (should be false): {secondAttempt}");
+
+var unassigned = patient.UnassignBed();
+Console.WriteLine($"UnassignBed returned: {unassigned}");
+Console.WriteLine(patient);
+Console.WriteLine(bed);
+
+Console.WriteLine("Demo end");}
+           }
+}
