@@ -1,0 +1,17 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        string nomeCompleto = "João Silva";
+        int idade = 30;
+        char letraInicialNome = 'J';
+        double salario = 2500.50;
+
+        Console.WriteLine("Nome Completo: " + nomeCompleto);
+        Console.WriteLine("Idade: " + idade);
+        Console.WriteLine("Letra Inicial do Nome: " + letraInicialNome);
+        Console.WriteLine("Salário: R$ " + salario);
+    }
+}
