@@ -1,5 +1,4 @@
-// Project layout (single file for preview).
-// File: src/StudioSchedule/Domain/ValueObjects/DateRange.cs
+
 #nullable enable
 using System;
 using System.Collections.Generic;

@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using StudioSchedule.Entities;
 using StudioSchedule.ValueObjects;
-using StudioSchedule.Exceptions;
+using StudioSchedule.Domain.Exceptions;
 
 namespace StudioSchedule
 {

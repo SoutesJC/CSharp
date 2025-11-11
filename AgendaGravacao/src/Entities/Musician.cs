@@ -1,4 +1,4 @@
-// File: src/StudioSchedule/Domain/Entities/Musician.cs
+
 #nullable enable
 using System;
 using StudioSchedule.ValueObjects;

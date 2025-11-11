@@ -1,0 +1,14 @@
+C:\Users\jcsou\Downloads\Faculdade\POO\AgendaGravacao\bin\Debug\net9.0\AgendaGravacao.exe
+C:\Users\jcsou\Downloads\Faculdade\POO\AgendaGravacao\bin\Debug\net9.0\AgendaGravacao.deps.json
+C:\Users\jcsou\Downloads\Faculdade\POO\AgendaGravacao\bin\Debug\net9.0\AgendaGravacao.runtimeconfig.json
+C:\Users\jcsou\Downloads\Faculdade\POO\AgendaGravacao\bin\Debug\net9.0\AgendaGravacao.dll
+C:\Users\jcsou\Downloads\Faculdade\POO\AgendaGravacao\bin\Debug\net9.0\AgendaGravacao.pdb
+C:\Users\jcsou\Downloads\Faculdade\POO\AgendaGravacao\obj\Debug\net9.0\AgendaGravacao.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jcsou\Downloads\Faculdade\POO\AgendaGravacao\obj\Debug\net9.0\AgendaGravacao.AssemblyInfoInputs.cache
+C:\Users\jcsou\Downloads\Faculdade\POO\AgendaGravacao\obj\Debug\net9.0\AgendaGravacao.AssemblyInfo.cs
+C:\Users\jcsou\Downloads\Faculdade\POO\AgendaGravacao\obj\Debug\net9.0\AgendaGravacao.csproj.CoreCompileInputs.cache
+C:\Users\jcsou\Downloads\Faculdade\POO\AgendaGravacao\obj\Debug\net9.0\AgendaGravacao.dll
+C:\Users\jcsou\Downloads\Faculdade\POO\AgendaGravacao\obj\Debug\net9.0\refint\AgendaGravacao.dll
+C:\Users\jcsou\Downloads\Faculdade\POO\AgendaGravacao\obj\Debug\net9.0\AgendaGravacao.pdb
+C:\Users\jcsou\Downloads\Faculdade\POO\AgendaGravacao\obj\Debug\net9.0\AgendaGravacao.genruntimeconfig.cache
+C:\Users\jcsou\Downloads\Faculdade\POO\AgendaGravacao\obj\Debug\net9.0\ref\AgendaGravacao.dll

@@ -1,11 +1,9 @@
 // File: tests/StudioSchedule.Tests/ScheduleTests.cs
 #nullable enable
 using System;
-using Xunit;
-using StudioSchedule.Aggregates;
 using StudioSchedule.Entities;
 using StudioSchedule.ValueObjects;
-using StudioSchedule.Exceptions;
+using StudioSchedule.Domain.Exceptions;
 using System.Linq;
 
 namespace StudioSchedule.Tests

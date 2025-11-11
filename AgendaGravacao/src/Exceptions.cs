@@ -1,4 +1,4 @@
-// File: src/StudioSchedule/Domain/Exceptions/DomainExceptions.cs
+
 #nullable enable
 using System;
 

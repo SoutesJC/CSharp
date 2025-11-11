@@ -1,4 +1,4 @@
-// File: src/StudioSchedule/Domain/ValueObjects/UnionCard.cs
+
 #nullable enable
 using System;
 

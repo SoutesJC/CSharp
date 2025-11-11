@@ -1,4 +1,3 @@
-// File: src/StudioSchedule/Domain/Entities/Room.cs
 #nullable enable
 using System;
 
