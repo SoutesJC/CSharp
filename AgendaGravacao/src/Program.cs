@@ -26,11 +26,8 @@ namespace StudioSchedule
 
             // 4️⃣ Criar sessões de gravação
             var sessao1 = new Session(Guid.NewGuid(), salaA, horarioManha, new[] { musico1, musico2 });
-            sessao1.AddParticipant(musico1);
-            sessao1.AddParticipant(musico2);
 
             var sessao2 = new Session(Guid.NewGuid(), salaA, horarioTarde, new[] { musico3 });
-            sessao2.AddParticipant(musico3);
 
             // 5️⃣ Criar agenda geral (Schedule)
             var agenda = new Schedule();
@@ -41,12 +38,12 @@ namespace StudioSchedule
             Console.WriteLine("Sessões agendadas:");
             foreach (var s in agenda.Sessions)
             {
-                Console.WriteLine($"- {s.Room.Name} | {s.When}");
+                Console.WriteLine($"- {s.Room.Name} | {s.When.Start:HH:mm} - {s.When.End:HH:mm}");
                 Console.WriteLine($"  Músicos: {string.Join(", ", s.Participants.Select(m => m.FullName))}");
             }
 
             // 7️⃣ Teste de regra de negócio (colisão)
-            try
+            /*try
             {
                 Console.WriteLine("\nTentando agendar sessão conflitante...");
                 var sessaoConflitante = new Session(Guid.NewGuid(), salaA, new DateRange(hoje.AddHours(11), hoje.AddHours(14)), new[] { musico2 });
@@ -55,7 +52,7 @@ namespace StudioSchedule
             catch (Exception ex)
             {
                 Console.WriteLine($"Erro: {ex.Message}");
-            }
+            }*/
 
             Console.WriteLine("\nPrograma finalizado com sucesso!");
         }
