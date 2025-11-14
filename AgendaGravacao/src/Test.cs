@@ -1,4 +1,4 @@
-// File: tests/StudioSchedule.Tests/ScheduleTests.cs
+
 #nullable enable
 using System;
 using StudioSchedule.Entities;
