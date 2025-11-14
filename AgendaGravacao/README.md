@@ -77,3 +77,52 @@ Uma agenda geral do estúdio, com:
 ```bash
 git clone https://github.com/seuusuario/studio-schedule.git
 cd studio-schedule
+```
+## 🧱 Como Criar as Entidades do Domínio
+
+A seguir estão instruções simples e diretas para criar cada entidade do sistema dentro do `Program.cs` ou em qualquer outro ponto da aplicação.
+
+---
+
+### 🏢 Criar uma Sala (Room)
+
+```
+var salaA = new Room(Guid.NewGuid(), "Sala A");
+```
+### 🎤 Criar um Músico (Musician)
+```
+var musico1 = new Musician(Guid.NewGuid(), "Carlos Silva", new UnionCard("12345"));
+
+var musico2 = new Musician(Guid.NewGuid(), "Ana Souza");
+```
+### 🪪 Criar uma UnionCard (Carteira Sindical)
+```
+var carteirinha = new UnionCard("12345");
+```
+### 🕒 Criar um Intervalo de Tempo (DateRange)
+```
+var horario = new DateRange(
+    DateTime.Today.AddHours(9),
+    DateTime.Today.AddHours(12)
+);
+```
+### 🎬 Criar uma Sessão de Gravação (Session)
+```
+var sessao = new Session(
+    Guid.NewGuid(),
+    salaA,
+    horario,
+    new[] { musico1, musico2 }
+);
+```
+### Adicionar participantes depois
+```
+sessao.AddParticipant(musico3);
+```
+### 🗓 Criar a Agenda (Schedule)
+```
+var agenda = new Schedule();
+agenda.AddSession(sessao);
+```
+
+
